@@ -1,20 +1,53 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+  <ion-toolbar color="success">
+    <ion-title> Notícias </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  @for(noticia of noticias; track noticia.data) {
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{noticia.titulo}}</ion-card-title>
+      <ion-card-subtitle>{{noticia.data}}</ion-card-subtitle>
+    </ion-card-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-item>
+      <img [src]="noticia.imagem" [alt]="noticia.titulo"/>
+    </ion-item>
+
+    <ion-card-content>
+      <div [innerHTML]="noticia.conteudo"></div>
+    </ion-card-content>
+
+    <ion-item>
+      <ion-buttons slot="end">
+        <ion-button (click)="curtir(noticia)" fill="clear">
+          @if (noticia.curtido) {
+          <ion-icon name="thumbs-up-outline" color="success"></ion-icon>
+          } @else {
+          <ion-icon name="thumbs-up-outline"></ion-icon>
+          }
+        </ion-button>
+
+        <ion-button (click)="naoCurtir(noticia)" fill="clear">
+          @if (noticia.naoCurtido) {
+          <ion-icon name="thumbs-down-outline" color="danger"></ion-icon>
+          } @else {
+          <ion-icon name="thumbs-down-outline"></ion-icon>
+          }
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-card>
+  }
+  <div class="ion-text-center">
+    <ion-button 
+      routerLink="/cadastro-noticia" 
+      fill="outline"
+      color="success"
+    >
+      Cadastrar Notícia
+    </ion-button>
   </div>
 </ion-content>
