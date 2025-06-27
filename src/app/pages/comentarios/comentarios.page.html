@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="success">
+    <ion-title>Comentários</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" />
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Feed de Comentários</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        @for(comentario of comentarios; track comentario.id) {
+        <ion-item>
+          <ion-label>
+            <p><strong>Comentário:</strong> {{ comentario.texto }}</p>
+            <p><strong>Autor:</strong> {{ comentario.autor }}</p>
+            <p><strong>Data:</strong> {{ comentario.dataComentario | date:'dd/MM/yyyy' }}</p>
+          </ion-label>
+        </ion-item>
+        } @empty {
+        <ion-text>Nenhum comentario cadastrado</ion-text>
+        }
+      </ion-list>
+      <ion-button
+        color="success"
+        fill="outline"
+        expand="block"
+        (click)="abrirAdicionar()"
+      >
+        Adicionar
+        <ion-icon name="add-outline" slot="start" />
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

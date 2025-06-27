@@ -1,0 +1,62 @@
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Cadastrar nova notícia</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form>
+        <ion-item>
+          <ion-input
+            label="Titulo"
+            labelPlacement="floating"
+            fill="clear"
+            [(ngModel)]="noticia.titulo"
+            name="titulo"
+          />
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            label="Data"
+            labelPlacement="floating"
+            fill="clear"
+            type="date"
+            [(ngModel)]="noticia.data"
+            name="data"
+          />
+        </ion-item>
+
+        <ion-item>
+          <ion-textarea
+            label="Conteúdo"
+            labelPlacement="floating"
+            fill="clear"
+            [(ngModel)]="noticia.conteudo"
+            name="conteudo"
+          >
+          </ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            label="Imagem(link)"
+            labelPlacement="floating"
+            fill="clear"
+            [(ngModel)]="noticia.imagem"
+            name="imagem"
+          />
+        </ion-item>
+
+        <ion-button
+          expand="block"
+          color="success"
+          class="ion-margin-top"
+          (click)="salvar()"
+        >
+          Salvar
+          <ion-icon name="save-outline" slot="start" />
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

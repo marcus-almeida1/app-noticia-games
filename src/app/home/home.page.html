@@ -5,49 +5,60 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  @for(noticia of noticias; track noticia.data) {
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>{{noticia.titulo}}</ion-card-title>
-      <ion-card-subtitle>{{noticia.data}}</ion-card-subtitle>
-    </ion-card-header>
+  <ion-list>
+    @for(noticia of noticias; track noticia.id) {
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{noticia.titulo}}</ion-card-title>
+        <ion-card-subtitle>{{noticia.data | date:'dd/MM/yyyy'}}</ion-card-subtitle>
+      </ion-card-header>
 
-    <ion-item>
-      <img [src]="noticia.imagem" [alt]="noticia.titulo"/>
-    </ion-item>
+      <ion-item>
+        <img [src]="noticia.imagem"/>
+      </ion-item>
 
-    <ion-card-content>
-      <div [innerHTML]="noticia.conteudo"></div>
-    </ion-card-content>
+      <ion-card-content>
+        <div [innerHTML]="noticia.conteudo"></div>
+      </ion-card-content>
 
-    <ion-item>
-      <ion-buttons slot="end">
-        <ion-button (click)="curtir(noticia)" fill="clear">
-          @if (noticia.curtido) {
-          <ion-icon name="thumbs-up-outline" color="success"></ion-icon>
-          } @else {
-          <ion-icon name="thumbs-up-outline"></ion-icon>
-          }
-        </ion-button>
+      <ion-item>
+        <ion-buttons slot="start">
+          <ion-button (click)="curtir(noticia)" fill="clear">
+            @if (noticia.curtido) {
+            <ion-icon name="thumbs-up" color="success"></ion-icon>
+            } @else {
+            <ion-icon name="thumbs-up"></ion-icon>
+            }
+          </ion-button>
 
-        <ion-button (click)="naoCurtir(noticia)" fill="clear">
-          @if (noticia.naoCurtido) {
-          <ion-icon name="thumbs-down-outline" color="danger"></ion-icon>
-          } @else {
-          <ion-icon name="thumbs-down-outline"></ion-icon>
-          }
-        </ion-button>
-      </ion-buttons>
-    </ion-item>
-  </ion-card>
-  }
+          <ion-button (click)="naoCurtir(noticia)" fill="clear">
+            @if (noticia.naoCurtido) {
+            <ion-icon name="thumbs-down" color="danger"></ion-icon>
+            } @else {
+            <ion-icon name="thumbs-down"></ion-icon>
+            }
+          </ion-button>
+          <ion-button routerLink="/comentarios">
+            <ion-icon name="chatbubble-ellipses"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+
+        <ion-buttons slot="end">
+          <ion-button color="warning" (click)="abrirAdicionar(noticia)">
+            <ion-icon name="create-outline" slot="icon-only"></ion-icon>
+          </ion-button>
+          <ion-button color="danger" (click)="excluirNoticia(noticia)">
+            <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-card>
+    }
+  </ion-list>
   <div class="ion-text-center">
-    <ion-button 
-      routerLink="/cadastro-noticia" 
-      fill="outline"
-      color="success"
-    >
-      Cadastrar Notícia
+    <ion-button (click)="abrirAdicionar()" fill="clear" color="success">
+      <ion-icon name="add-circle" slot="icon-only"></ion-icon>
+      adicionar
     </ion-button>
   </div>
 </ion-content>
