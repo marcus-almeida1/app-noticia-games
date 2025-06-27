@@ -1,0 +1,51 @@
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Cadastrar novo comentário</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form>
+        <ion-item>
+          <ion-textarea
+            label="Comentário"
+            labelPlacement="floating"
+            fill="clear"
+            [(ngModel)]="comentario.texto" 
+            name="texto"
+          ></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            label="Autor"
+            labelPlacement="floating"
+            fill="clear"
+            [(ngModel)]="comentario.autor"
+            name="autor"
+          />
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            label="Data"
+            labelPlacement="floating"
+            fill="clear"
+            type="date"
+            [(ngModel)]="comentario.dataComentario"
+            name="data"
+          />
+        </ion-item>
+
+        <ion-button
+          expand="block"
+          color="success"
+          class="ion-margin-top"
+          (click)="salvarComentario()"
+        >
+          Salvar
+          <ion-icon name="save-outline" slot="start" />
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

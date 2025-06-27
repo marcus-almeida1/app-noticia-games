@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { addCircle, createOutline, saveOutline, thumbsDown, thumbsUp, trashOutline } from 'ionicons/icons';
+import { addCircle, chatbubbleEllipses, createOutline, saveOutline, thumbsDown, thumbsUp, trashOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +10,6 @@ import { addCircle, createOutline, saveOutline, thumbsDown, thumbsUp, trashOutli
 })
 export class AppComponent {
   constructor() {
-    addIcons({thumbsUp, thumbsDown, trashOutline, saveOutline, addCircle, createOutline})
+    addIcons({thumbsUp, thumbsDown, trashOutline, saveOutline, addCircle, createOutline, chatbubbleEllipses})
   }
 }
